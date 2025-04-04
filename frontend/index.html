@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ofertas</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .btn {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+    .btn-primary { background-color: #007bff; color: white; }
+    .btn-success { background-color: #28a745; color: white; }
+    .btn-warning { background-color: #ffc107; color: white; }
+  </style>
+</head>
+<body>
+  <div id="app" class="container">
+    <h1>Listado de Ofertas</h1> <br>
+    
+    <button class="btn btn-primary" onclick="window.location.href='crear.html'">Crear Nueva Oferta</button>
+    <button class="btn btn-success" onclick="window.location.href='descargar.html'">Descargar Ofertas en Excel</button> 
+    <button class="btn btn-secondary" onclick="window.location.href='buscar.html'">🔍 Buscar Ofertas</button>
+
+
+    <div v-if="ofertas.length === 0">No hay ofertas registradas.</div>
+    
+    <div v-for="oferta in ofertas" :key="oferta.id" class="oferta">
+      <br><strong>ID:</strong> {{ oferta.id }}<br>
+      <strong>Objeto:</strong> {{ oferta.objeto }}<br>
+      <strong>Descripción:</strong> {{ oferta.descripcion }}<br>
+      <strong>Moneda:</strong> {{ oferta.moneda }}<br>
+      <strong>Presupuesto:</strong> {{ oferta.presupuesto }}<br>
+      <strong>Actividad:</strong> {{ oferta.actividad }}<br>
+      <strong>Fecha de inicio:</strong> {{ oferta.fecha_inicio }}<br>
+      <strong>Fecha de cierre:</strong> {{ oferta.fecha_cierre }}<br>
+      <strong>Estado:</strong> {{ oferta.estado }}<br>
+      <strong>Documentos subidos:</strong> {{ oferta.cantidad_documentos }}<br>
+
+
+      <button class="btn btn-warning" v-if="oferta.estado !== 'PUBLICADO'" @click="publicarOferta(oferta)">
+        Publicar Oferta
+      </button>
+
+      <div style="margin-top: 15px; border-top: 1px solid #ccc; padding-top: 10px;">
+        <h3>Subir Documentación para esta Oferta</h3>
+        <form @submit.prevent="subirDocumento(oferta.id)">
+          <label>Título:</label><br>
+          <input type="text" v-model="docNuevo.titulo" required><br>
+
+          <label>Descripción:</label><br>
+          <input type="text" v-model="docNuevo.descripcion" required><br>
+
+          <label>Archivo:</label><br>
+          <input type="file" @change="docNuevo.archivo = $event.target.files[0]" required>
+
+          <button type="submit" class="btn btn-success">Subir Documento</button>
+        </form>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>  
+</body>
+</html>

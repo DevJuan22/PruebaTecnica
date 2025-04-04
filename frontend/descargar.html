@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Descargar Ofertas</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="estilos/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Descargar Ofertas</h1>
+    <button id="exportarExcel" class="btn btn-export">Exportar Todo a Excel</button>
+    <a href="index.html" class="btn btn-secondary">Volver</a>
+  </div>
+
+  <script>
+    document.getElementById("exportarExcel").addEventListener("click", function() {
+      window.location.href = "../exportar_excel.php";
+    });
+  </script>
+</body>
+</html>

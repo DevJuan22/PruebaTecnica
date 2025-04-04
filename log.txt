@@ -1,0 +1,167 @@
+Array
+(
+    [oferta_id] => 1
+    [titulo] => 1
+    [descripcion] => 2
+    [archivo] => null
+)
+
+Array
+(
+)
+
+Array
+(
+)
+
+Array
+(
+)
+
+Array
+(
+    [oferta_id] => 4
+    [titulo] => dcsada
+    [descripcion] => sdadsa
+    [archivo] => null
+)
+
+Array
+(
+)
+
+Array
+(
+)
+
+Array
+(
+)
+
+Array
+(
+    [oferta_id] => 4
+    [titulo] => dasa
+    [descripcion] => dasdsa
+    [archivo] => null
+)
+
+Array
+(
+)
+
+Array
+(
+)
+
+Array
+(
+)
+
+Array
+(
+    [oferta_id] => 5
+    [titulo] => 2
+    [descripcion] => 3
+    [archivo] => null
+)
+
+Array
+(
+)
+
+Array
+(
+)
+
+Array
+(
+)
+
+Array
+(
+    [oferta_id] => 5
+    [titulo] => as
+    [descripcion] => sa
+)
+
+Array
+(
+    [archivo] => Array
+        (
+            [name] => QA_Formato_Pruebas funcionales.docx
+            [full_path] => QA_Formato_Pruebas funcionales.docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\Nueva carpeta\tmp\php1DBA.tmp
+            [error] => 0
+            [size] => 348929
+        )
+
+)
+
+Array
+(
+)
+
+Array
+(
+)
+
+Array
+(
+    [oferta_id] => 4
+    [titulo] => 1
+    [descripcion] => 2
+)
+
+Array
+(
+    [archivo] => Array
+        (
+            [name] => QA_Formato_Pruebas INTEGRACION.docx
+            [full_path] => QA_Formato_Pruebas INTEGRACION.docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\Nueva carpeta\tmp\php1A32.tmp
+            [error] => 0
+            [size] => 348966
+        )
+
+)
+
+Array
+(
+)
+
+Array
+(
+)
+
+Array
+(
+    [oferta_id] => 8
+    [titulo] => documento
+    [descripcion] => mio
+)
+
+Array
+(
+    [archivo] => Array
+        (
+            [name] => QA_Formato_Pruebas INTEGRACION.docx
+            [full_path] => QA_Formato_Pruebas INTEGRACION.docx
+            [type] => application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            [tmp_name] => C:\Nueva carpeta\tmp\phpF359.tmp
+            [error] => 0
+            [size] => 348966
+        )
+
+)
+
+Array
+(
+)
+
+Array
+(
+)
+

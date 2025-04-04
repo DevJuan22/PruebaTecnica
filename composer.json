@@ -1,0 +1,17 @@
+{
+    "name": "ruizj/config",
+    "autoload": {
+        "psr-4": {
+            "Ruizj\\Config\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JuanRuiz22",
+            "email": "ruizjuandiego3@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^4.1"
+    }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Oferta</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="container">
+    <h2>Crear Nueva Oferta</h2>
+    <form @submit.prevent="crearOferta">
+      <label>Objeto:</label>
+      <input type="text" v-model="nuevaOferta.objeto" required>
+      
+      <label>Descripción:</label>
+      <input type="text" v-model="nuevaOferta.descripcion" required>
+
+      <label>Moneda:</label>
+      <select v-model="nuevaOferta.moneda" required>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="COP">COP</option>
+      </select>
+
+      <label>Presupuesto:</label>
+      <input type="number" v-model="nuevaOferta.presupuesto" required>
+
+      <label>Actividad:</label>
+      <input type="text" v-model="nuevaOferta.actividad" required>
+
+      <label>Fecha de Inicio:</label>
+      <input type="date" v-model="nuevaOferta.fecha_inicio" required>
+
+      <label>Fecha de Cierre:</label>
+      <input type="date" v-model="nuevaOferta.fecha_cierre" required>
+
+      <button type="submit" class="btn">Crear Oferta</button>
+    </form>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        nuevaOferta: {
+          objeto: '',
+          descripcion: '',
+          moneda: '',
+          presupuesto: '',
+          actividad: '',
+          fecha_inicio: '',
+          fecha_cierre: '',
+          estado: 'ACTIVO'
+        }
+      },
+      methods: {
+        crearOferta() {
+          axios.post('http://localhost/config/api.php', this.nuevaOferta, {
+              headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => {
+              alert('Oferta creada con éxito');
+              window.location.href = 'index.html'; // Redirigir al listado de ofertas
+            })
+            .catch(error => {
+              console.error('Error al crear oferta:', error);
+            });
+        }
+      }
+    });
+  </script>
+</body>
+</html>

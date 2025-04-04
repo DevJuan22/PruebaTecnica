@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Buscar Ofertas</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 2rem;
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin-bottom: 1rem;
+    }
+    .volver-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <a href="index.html" class="btn btn-secondary volver-btn">← Volver</a>
+
+    <h2 class="mb-4">Buscar Ofertas</h2>
+
+    <div class="card p-3 mb-4">
+      <div class="row g-3">
+        <div class="col-md-2">
+          <input v-model="filtros.id" type="number" class="form-control" placeholder="ID">
+        </div>
+        <div class="col-md-2">
+          <input v-model="filtros.objeto" type="text" class="form-control" placeholder="Objeto">
+        </div>
+       
+        <div class="col-md-2">
+          <input v-model="filtros.estado" type="text" class="form-control" placeholder="Estado">
+        </div>
+        <div class="col-md-2">
+          <input v-model="filtros.fecha_inicio" type="date" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <input v-model="filtros.fecha_cierre" type="date" class="form-control">
+        </div>
+        <div class="col-12 text-end">
+          <button @click="buscar" class="btn btn-primary">Buscar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div v-if="resultados.length > 0">
+      <h4>Resultados:</h4>
+      <div class="row">
+        <div v-for="oferta in resultados" :key="oferta.id" class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">ID: {{ oferta.id }}</h5>
+              <p class="card-text"><strong>Objeto:</strong> {{ oferta.objeto }}</p>
+              <p class="card-text"><strong>Estado:</strong> {{ oferta.estado }}</p>
+              <p class="card-text"><strong>Fecha de Inicio:</strong> {{ oferta.fecha_inicio }}</p>
+              <p class="card-text"><strong>Fecha de Cierre:</strong> {{ oferta.fecha_cierre }}</p>
+              <p class="card-text text-success">
+                <strong>Documentos Subidos:</strong> {{ oferta.total_documentos || 0 }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-else class="text-center text-muted mt-4">
+      <p>No hay resultados que coincidan con la búsqueda.</p>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        filtros: {
+          id: '',
+          objeto: '',
+          responsable: '',
+          estado: '',
+          fecha_inicio: '',
+          fecha_cierre: ''
+        },
+        resultados: []
+      },
+      methods: {
+        buscar() {
+          fetch('../buscar_api.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.filtros)
+          })
+          .then(response => response.json())
+          .then(data => {
+            this.resultados = Array.isArray(data) ? data : [];
+          })
+          .catch(error => {
+            console.error('Error en búsqueda:', error);
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
